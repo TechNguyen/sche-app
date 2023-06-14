@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import Styles from './Login.module.scss'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input ,notification, Space } from 'antd';
+import { Button, Checkbox, Form, Input ,notification } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 const cx = classNames.bind(Styles);
@@ -29,7 +29,7 @@ const Login = () => {
   const onFinish = (values) => {
      const checkacc = async () => {
         try {
-          const checkacc = await axios.post('http://localhost:5000/login', values)
+          const checkacc = await axios.post(`${process.env.REACT_APP_API_KEY}/login`, values)
           if(checkacc.data) {
             navigate('/list')
           }
