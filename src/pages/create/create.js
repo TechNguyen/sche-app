@@ -6,7 +6,7 @@ import {
     Select,
   } from 'antd';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Styles from './create.module.scss'
 import classNames from 'classnames/bind';
@@ -18,9 +18,7 @@ const cx = classNames.bind(Styles);
       setComponentSize(size);
     };
     return (
-
       <div className={cx('wrapper__create')}>
-
         <Form
           labelCol={{
             span: 4,
@@ -41,11 +39,13 @@ const cx = classNames.bind(Styles);
           onFinish={ async (values) => {
             values.Time = values.Time.$d.toISOString().split('T')[0]
             try {
-              await axios.post(`${process.env.REACT_APP_API_KEY}/create`, values)
+              const checkshc = await axios.post(`${process.env.REACT_APP_API_KEY}/create`, values)
+              if(checkshc.data) {
+                navigate('/list')
+              }
             } catch (err) {
               Response.status(400)
             }
-            navigate('/list')
           }}
         >
           <Form.Item label="Chọn lớp" name={"class"}>
