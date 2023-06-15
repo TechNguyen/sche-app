@@ -76,7 +76,7 @@ const { Text } = Typography;
     };
     const getdata = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/list")
+        const res = await axios.get(`${process.env.REACT_APP_API_KEY}/list`)
         setData(res.data)
       } catch(err) {
         Response.status(404)
