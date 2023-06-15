@@ -13,16 +13,6 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(Styles);
   const Create = () => {
     const navigate = useNavigate();
-    useEffect(() => {
-        const renderitem = async () => {
-            try {
-                const res = await axios.get(`${process.env.REACT_APP_API_KEY}/create`)
-            } catch(err) {
-              
-            }
-        }
-        renderitem()
-    }, [])
     const [componentSize, setComponentSize] = useState('default');
     const onFormLayoutChange = ({ size }) => {
       setComponentSize(size);
