@@ -4,6 +4,7 @@ import { DownOutlined } from '@ant-design/icons';
 import { useState, useEffect } from 'react';
 import axios, { Axios } from 'axios';
 import useFetch from '../../components/useFetch';
+import { Link } from 'react-router-dom';
 const { Text } = Typography;
   const columns = [
     {
@@ -88,7 +89,8 @@ const { Text } = Typography;
     if (data) {
       return (
         <>
-         <Button className='cre__btn' type="link" href='/create'>Tạo buổi mới</Button>  
+        <Link to={'/create'}>Tao</Link>
+         {/* <Button className='cre__btn' type="link" href='/create'>Tạo buổi mới</Button>   */}
           <Table
               {...tableProps}
               pagination={{
